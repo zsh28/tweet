@@ -40,7 +40,7 @@ rugguard/
 ### 1. Clone the Repo
 
 ```bash
-git clone https://github.com/zsh28/rugguard.git
+git clone https://github.com/zsh28/tweer.git
 cd rugguard
 python3 -m venv venv
 source venv/bin/activate
