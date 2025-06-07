@@ -124,6 +124,7 @@ Deploy your bot in minutes using Replit:
 * Paste your repo URL:
   `https://github.com/zsh28/tweet`
 * Click **"Import"**
+* Click "Confirm and close" once the import finishes.
 
 
 ### 🔐 3. Set Environment Secrets
