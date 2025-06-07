@@ -102,3 +102,57 @@ This will start the bot in polling mode (checks every 3 minutes by default). It 
 • Followed by 3 trusted accounts
 Verdict: ✅ Reliable
 ```
+
+
+## 🚀 Deployment (Replit)
+
+Deploy your bot in minutes using Replit:
+
+### 🛠️ 1. Create a New App on Replit
+
+* Visit [https://replit.com](https://replit.com)
+* Click **"+ Create Repl"**
+* Choose:
+
+  * **Language**: Python
+  * **Project name**: `rugguard`
+
+
+### 🔄 2. Import from GitHub
+
+* In the new project window, click **"Import from GitHub"**
+* Paste your repo URL:
+  `https://github.com/zsh28/tweet`
+* Click **"Import"**
+
+
+### 🔐 3. Set Environment Secrets
+
+* Click the **🔐 Secrets (Environment Variables)** tab in the sidebar
+* Add the following secrets:
+
+| Key               | Value              |
+| ----------------- | ------------------ |
+| `X_API_KEY`       | Your API Key       |
+| `X_API_SECRET`    | Your API Secret    |
+| `X_ACCESS_TOKEN`  | Your Access Token  |
+| `X_ACCESS_SECRET` | Your Access Secret |
+| `X_BEARER_TOKEN`  | Your Bearer Token  |
+
+You can obtain these from your [X Developer Portal](https://developer.x.com/en/portal/dashboard).
+
+### ▶️ 4. Run the App
+
+* Click the green **"Run"** button at the top
+* You should see:
+
+  ```
+  🤖 RUGGUARD bot is running...
+  ```
+
+If needed, set the run command manually in `.replit`:
+
+```ini
+run = "python3 main.py"
+```
+
