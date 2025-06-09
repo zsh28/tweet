@@ -1,51 +1,47 @@
-
 # 🛡️ RUGGUARD – Solana Trustworthiness Bot for X (Twitter)
 
 ## ✨ Features
 
-- 🧠 Listens for `"riddle me this"` replies
-- 👤 Analyzes the **original tweet's author**
-- 📊 Evaluates:
-  - Account age
-  - Follower/following ratio
-  - Bio content (length, suspicious keywords)
-  - Engagement metrics (likes, retweets)
-  - Sentiment from recent tweets
-  - Trusted followers cross-check
-- 🤖 Posts a detailed trust report **as a reply**
-- ☁️ Deployable on Replit or any Python 3.12+ environment
+* 🧠 Listens for replies containing `"riddle me this"`
+* 👤 Analyzes the **author of the original tweet**
+* 📊 Evaluates:
+
+  * Account age
+  * Follower/following ratio
+  * Bio content (length, suspicious keywords)
+  * Engagement metrics (likes, retweets)
+  * Sentiment from recent tweets
+  * Whether they’re followed by trusted accounts
+* 💬 Posts a **natural-sounding trust report** as a reply
+* ☁️ Easy deployment on Replit or any Python 3.12+ environment
 
 ## 📂 Project Structure
 
 ```
-
 rugguard/
 ├── main.py                  # Entry point: runs the bot loop
 ├── .env                     # API credentials (not committed)
 ├── requirements.txt         # Dependencies
 ├── config/
-│   └── x_api.py       # Auth & Tweepy v2 Client setup
+│   └── x_api.py             # Auth & Tweepy v2 client setup
 └── src/
-├── analyzer.py          # Analyzes a user's trust profile
-├── listener.py          # Detects trigger tweets
-├── reply_engine.py      # Generates & posts reply
-└── trusted_accounts.py  # Fetches & caches trusted user IDs
-
-````
-
- 
+    ├── analyzer.py          # Analyzes a user's trust profile
+    ├── listener.py          # Detects trigger tweets
+    ├── reply_engine.py      # Generates & posts natural reply
+    └── trusted_accounts.py  # Hardcoded trusted account handles
+```
 
 ## ⚙️ Setup & Installation
 
 ### 1. Clone the Repo
 
 ```bash
-git clone https://github.com/zsh28/tweer.git
+git clone https://github.com/zsh28/tweet.git
 cd rugguard
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
-````
+```
 
 ### 2. Create `.env`
 
@@ -59,11 +55,9 @@ X_ACCESS_SECRET=your_access_secret
 X_BEARER_TOKEN=your_bearer_token
 ```
 
-You can obtain these credentials from your [X Developer Portal](https://developer.x.com/en/portal).
+You can find these credentials in your [X Developer Portal](https://developer.x.com/en/portal).
 
-**Tip:** On Replit, use the "Secrets" tab to add these instead.
-
- 
+> 💡 **Tip**: On Replit, use the **Secrets** tab instead of a `.env` file.
 
 ## ▶️ Run the Bot
 
@@ -71,66 +65,61 @@ You can obtain these credentials from your [X Developer Portal](https://develope
 python main.py
 ```
 
-This will start the bot in polling mode (checks every 3 minutes by default). It will detect trigger phrases and respond appropriately.
-
- 
+This starts the bot in polling mode (checking for new replies every \~3 minutes). When someone tweets `"riddle me this"` in reply, the bot analyzes the original tweet's author and responds.
 
 ## 🧪 How It Works
 
-1. The bot runs and listens for replies like:
-   `@<botname> riddle me this`
-2. It checks which tweet this was replying to.
-3. It fetches and analyzes the **author** of that original tweet.
-4. It evaluates the account based on:
-   * Age (in years)
-   * Engagement (likes, retweets)
+1. The bot watches for replies like:
+   `@<bot_username> riddle me this`
+2. It checks the original tweet being replied to.
+3. It analyzes that tweet's author based on:
+
+   * How long the account's been around
    * Follower/following ratio
    * Sentiment of recent tweets
-   * Keywords in bio
-   * Whether they are followed by **trusted accounts**
-5. It posts a **reply to the "riddle me this" tweet**, summarizing the findings.
+   * Bio quality and keyword flags
+   * Engagement (likes and RTs)
+   * Whether they're followed by trusted accounts
+4. It replies with a **natural, helpful trust summary**.
 
 ## 📈 Example Trust Report
 
 ```
-@user 🧠 Trust Report for @target
-• Age: 2.6 yrs
-• F/F Ratio: 2.4
-• Bio: “Solana dev, DAO governor...”
-• Engagement: 21❤️ / 7🔁
-• Sentiment: 0.18
-• Followed by 3 trusted accounts
-Verdict: ✅ Reliable
-```
+@user Checking out @target 👀
 
+• Around for 2.6 years  
+• Follower ratio: 2.4  
+• Bio says: “Solana dev, DAO governor...”  
+• Avg likes: 21 ❤️ / Retweets: 7 🔁  
+• General vibe: 0.18  
+• Followed by 3 trusted folks  
+
+✅ Looks pretty trustworthy!
+```
 
 ## 🚀 Deployment (Replit)
 
-Deploy your bot in minutes using Replit:
+You can deploy RUGGUARD in minutes using Replit:
 
-### 🛠️ 1. Create a New App on Replit
+### 🛠️ 1. Create a New Repl
 
-* Visit [https://replit.com](https://replit.com)
+* Go to [https://replit.com](https://replit.com)
 * Click **"+ Create Repl"**
 * Choose:
 
   * **Language**: Python
   * **Project name**: `rugguard`
 
-
 ### 🔄 2. Import from GitHub
 
-* In the new project window, click **"Import from GitHub"**
+* In the project window, click **"Import from GitHub"**
 * Paste your repo URL:
   `https://github.com/zsh28/tweet`
-* Click **"Import"**
-* Click "Confirm and close" once the import finishes.
-
+* Click **"Import"**, then **"Confirm and close"**
 
 ### 🔐 3. Set Environment Secrets
 
-* Click the **🔐 Secrets (Environment Variables)** tab in the sidebar
-* Add the following secrets:
+Click the **🔐 Secrets** tab and add the following keys:
 
 | Key               | Value              |
 | ----------------- | ------------------ |
@@ -140,7 +129,7 @@ Deploy your bot in minutes using Replit:
 | `X_ACCESS_SECRET` | Your Access Secret |
 | `X_BEARER_TOKEN`  | Your Bearer Token  |
 
-You can obtain these from your [X Developer Portal](https://developer.x.com/en/portal/dashboard).
+You can get these from your [X Developer Dashboard](https://developer.x.com/en/portal/dashboard).
 
 ### ▶️ 4. Run the App
 
@@ -151,9 +140,8 @@ You can obtain these from your [X Developer Portal](https://developer.x.com/en/p
   🤖 RUGGUARD bot is running...
   ```
 
-If needed, set the run command manually in `.replit`:
+If needed, set the `.replit` run command manually:
 
 ```ini
 run = "python3 main.py"
 ```
-

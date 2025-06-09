@@ -1,15 +1,15 @@
 def send_reply(client, trigger_tweet, username, report):
-    trust_score = "✅ Reliable" if report["trusted_count"] >= 2 else "⚠️ Needs Caution"
+    trust_score = "✅ Looks pretty trustworthy!" if report["trusted_count"] >= 2 else "⚠️ Might be worth a second look."
 
     reply_text = (
-        f"🧠 Trust Report for @{username}\n"
-        f"• Age: {report['age_years']} yrs\n"
-        f"• F/F Ratio: {report['ratio']}\n"
-        f"• Bio: {report['bio'][:50]}...\n"
-        f"• Engagement: {report['avg_likes']}❤️ / {report['avg_rts']}🔁\n"
-        f"• Sentiment: {report['sentiment']}\n"
-        f"• Followed by {report['trusted_count']} trusted accounts\n"
-        f"Verdict: {trust_score}"
+        f"Checking out @{username} 👀\n\n"
+        f"• Around for {report['age_years']} years\n"
+        f"• Follower ratio: {report['ratio']}\n"
+        f"• Bio says: “{report['bio'][:50]}...”\n"
+        f"• Avg likes: {report['avg_likes']} ❤️ / Retweets: {report['avg_rts']} 🔁\n"
+        f"• General vibe: {report['sentiment']}\n"
+        f"• Followed by {report['trusted_count']} trusted folks\n\n"
+        f"{trust_score}"
     )
 
     try:
